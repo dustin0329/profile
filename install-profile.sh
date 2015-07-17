@@ -6,4 +6,4 @@ if [ -f ~/.bashrc_user ]; then
     . ~/.bashrc_user
 fi
 " >> .bashrc
-source ~/.bashrc
+
