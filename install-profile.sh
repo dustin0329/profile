@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ..
-ln -s .profile/bashrc_user .bashrc_user
+ln -s .profile_user/bashrc_user .bashrc_user
 echo "
 if [ -f ~/.bashrc_user ]; then
     . ~/.bashrc_user
