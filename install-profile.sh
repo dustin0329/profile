@@ -7,3 +7,6 @@ if [ -f ~/.bashrc_user ]; then
 fi
 " >> .bashrc
 
+cd
+ln -s .profile_user/.screenrc .screenrc
+
