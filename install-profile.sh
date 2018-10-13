@@ -9,6 +9,6 @@ fi
 
 cd
 ln -s github_profile_user/.vimrc .vimrc
-ln -s github_profile_user/.vim/ .vim/
+ln -s github_profile_user/.vim .vim
 ln -s github_profile_user/.screenrc .screenrc
 
