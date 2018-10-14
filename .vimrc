@@ -25,6 +25,8 @@ set confirm                 " 操作過程有衝突時, 以明確的文字來詢
 set showcmd                 " 顯示尚未完成的命令, 如: 2f
 set showmode                " 顯示目前操作模式為一般, 插入, 取代還是選取模式
 
+"set mouse=a                 " 滑鼠控制模式
+
 set laststatus=2            " =2, 永遠開啟status line
 set statusline=[%F]\ %m%<%r%h%w\ [%{&ff},%{&fileencoding},%Y]%=\    " statusline
 set statusline+=\ [Pos=%l,%v,%p%%]\ [Total\ Line=%L]                " statusline
