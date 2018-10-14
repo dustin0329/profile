@@ -5,39 +5,57 @@ set encoding=utf-8
 set fileencodings=utf-8,cp950
  
 " 設定喜好設定:
-set nocompatible      " VIM 不使用和 VI 相容的模式 This most be first. because it changes other options as a side effect
-set ic                " 設定搜尋忽略大小寫
-set ru                " 第幾行第幾個字
-set nu                " 設定行號
-set hlsearch          " 設定是否將搜尋的字串反白的設定值 
-set nobackup          " 設定不自動儲存備份檔
-set ruler             " 顯示右下角狀態列說明
-syntax on             " 設定語法上色
-set tabstop=4         " tab 的字元數
-set history=100       " 保留 100 個使用過的指令
-set backspace=2       " 在 insert 也可用 backspace
-"set backspace=indent,eol,start
-set cursorline        " 顯示現在游標所在的行
-"set cursorcolumn      " 顯示現在游標所在的列
-set incsearch         " 在關鍵字還沒完全輸入完畢前就顯示結果
-set confirm           " 操作過程有衝突時，以明確的文字來詢問
+syntax on                   " 語法上色顯示
+set nocompatible            " VIM 不使用和 VI 相容的模式 This setting must be first. because it changes other options as a side effect
+set ic                      " 設定搜尋忽略大小寫
+set ru                      " 顯示右下角狀態列說明, 第幾行第幾個字, 設定statusline時, 無用
+set nu                      " 設定行號
+set hlsearch                " 搜尋結果hightlight顯示
+"hi Search cterm=reverse ctermbg=none ctermfg=none   " hightlight樣式調整, 應寫於colorscheme之後
+set incsearch               " 加強版搜尋功能, 在輸入search pattern期間就會開始進行搜尋, 
+set nobackup                " 設定不自動儲存備份檔
+set history=100             " 保留 100 個使用過的指令
+set backspace=2             " 在 insert 也可用 backspace
+"set backspace=indent,eol,start     " indent=允許使用backspace來刪除縮排, eol表示允許backspace來刪除換行字元, 使其可以退回至上一行, start表示允許使用ctrl+w and ctrl+u快速鍵來刪除獨立詞語和同類字元(縮排, 非縮排字元)
+set cursorline              " 顯示現在游標所在的行
+"set cursorcolumn           " 顯示現在游標所在的列
+set confirm                 " 操作過程有衝突時, 以明確的文字來詢問, 而不是直接阻擋使用者進行該項動作
+set showcmd                 " 顯示尚未完成的命令, 如: 2f
+set showmode                " 顯示目前操作模式為一般, 插入, 取代還是選取模式
 
-set laststatus=2
-set statusline=[%F]\ %m%<%r%h%w\ [%{&ff},%{&fileencoding},%Y]%=\ 
-set statusline+=\ [Pos=%l,%v,%p%%]\ [Total\ Line=%L]
-set expandtab			" 用space 代替 tab
-set shiftwidth=4      " 如果你使用用空白鍵取代tab鍵
-set shiftround        "
-set softtabstop=4     " 這樣backspace時 才會一次刪4格空白鍵
+set laststatus=2            " =2, 永遠開啟status line
+set statusline=[%F]\ %m%<%r%h%w\ [%{&ff},%{&fileencoding},%Y]%=\    " statusline
+set statusline+=\ [Pos=%l,%v,%p%%]\ [Total\ Line=%L]                " statusline
 
-"set showcmd		" display incomplete commands
-set autoindent        " 自動縮排
-set smartindent       " 設定 smartindent
-set pastetoggle=<F11> " 暫時取消自動縮行, copy多行時可先按F11, 否則因為有打開自動縮排, 資料貼上格式會跑掉
-                      " 輸入狀態變成<INSERT PASTE>時, 即可正常copy多行上去
-                      
-set completeopt=menu,preview,menuone "按tab會自動搜尋檔案內相關字詞來補滿
+"""cmd"""原有的tab到新的設定使用 :retab
+"""cmd"""normal mode下, 此行增加縮排 >>
+"""cmd"""normal mode下, 此行減少縮排 <<
+"""cmd"""insert mode下, 此行增加縮排 ctrl+shift+t
+"""cmd"""insert mode下, 此行減少縮排 ctrl+shift+d
+"""cmd"""可以查看tab符號 :set list
+"""cmd"""可以查看參數值 :set $arg, ex :set softtabstop
+autocmd FileType make setlocal noexpandtab  " 針對 Makefile 需要使用 tab, 而不能自動取代成 space
+set shiftwidth=4                            " 程式縮排(>> and <<)所需要的 space 個數
+set shiftround                              " 縮排對齊 shiftwidth 的整數倍
+set autoindent                              " enter後, 自動啟用autoindent縮排, 自動對齊上一行的縮排
+"set smartindent                            " enter後, 自動啟用smartindent縮排, 在上述基礎上, 針對"{", "}", 增加或減少縮排
+"set cindent                                " enter後, 自動啟用cindent縮排, 在上述基礎上, 加入簡單的c/c++/java等語法結構判斷
+set expandtab                               " 按下tab時, 自動將其替代為 space
+set tabstop=4                               " tab 的字元數
+set softtabstop=4                           " 按下tab鍵時, 實際占用的字元數
+"""ex"""if no expandtab, softtabstop(12) > tabstop(8), enter 1 tab, 1 tab(tabstop) + 4 space, 12 = 8 + 4
+"""ex"""                                               enter 2 tab, 3 tab(tabstop), 2*12 = 3*8
+"""ex"""if no expandtab, softtabstop(4) < tabstop(8), enter 1 tab, 4 space, 4 = 4
+"""ex"""if no expandtab, softtabstop = tabstop, no different
+"""ex"""if expandtab, softtabstop(4), enter 1 tab, 4 space
+"check by dustin
 
+set pastetoggle=<F11>   " 暫時取消自動縮行, copy多行時可先按F11, 否則因為有打開自動縮排, 資料貼上格式會跑掉
+                        " 輸入狀態變成<INSERT PASTE>時, 即可正常copy多行上去
+                        " vim register也可解決 不用動用F11
+
+"按tab會自動搜尋檔案內相關字詞來補滿
+set completeopt=menu,preview,menuone,noinsert 
 function InsertTabWrapper(is_shift)
     if pumvisible()
 	        return a:is_shift ? "\<C-p>" : "\<C-n>"
@@ -53,15 +71,14 @@ function InsertTabWrapper(is_shift)
 endfunction
 inoremap <tab> <C-r>=InsertTabWrapper(0)<CR>
 
-
-
+"download colorscheme
 "colorscheme candy
 "colorscheme distinguished
 "colorscheme grb256
 "colorscheme ir_black
 colorscheme jellybeans
 "colorscheme vividchalk
-
+"default colorscheme
 "colorscheme torte
 "colorscheme desert
 
@@ -69,7 +86,6 @@ colorscheme jellybeans
 set t_Co=256
 
 
-"set ic               "搜尋不分大小寫
 "set all              "顯示目前所有的環境參數設定
 "set                  "顯示與系統預設值不同的設定參數
 
