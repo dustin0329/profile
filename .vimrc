@@ -12,6 +12,7 @@ set nocompatible            " VIM 不使用和 VI 相容的模式 This setting m
 set ic                      " 設定搜尋忽略大小寫
 set ru                      " 顯示右下角狀態列說明, 第幾行第幾個字, 設定statusline時, 無用
 set nu                      " 設定行號
+set nowrap                  " 關閉自動換行, 建議設為 wrap 時, 搭配set nu使用
 set hlsearch                " 搜尋結果highlight顯示
 set incsearch               " 加強版搜尋功能, 在輸入search pattern期間就會開始進行搜尋, 
 set nobackup                " 設定不自動儲存備份檔
