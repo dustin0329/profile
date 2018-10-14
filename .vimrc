@@ -5,7 +5,7 @@ set encoding=utf-8
 set fileencodings=utf-8,cp950
  
 " 設定喜好設定:
-set background=dark         " 要在syntax on以前設定好背景色彩, 有colorscheme理應不用設定, 但反正我就是喜歡黑底的scheme沒差
+"set background=dark         " 要在syntax on以前設定好背景色彩, 有colorscheme理應不用設定, 但反正我就是喜歡黑底的scheme沒差
 
 syntax on                   " 語法上色顯示
 set nocompatible            " VIM 不使用和 VI 相容的模式 This setting must be first. because it changes other options as a side effect
