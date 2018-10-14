@@ -5,13 +5,14 @@ set encoding=utf-8
 set fileencodings=utf-8,cp950
  
 " 設定喜好設定:
+set background=dark         " 要在syntax on以前設定好背景色彩, 有colorscheme理應不用設定, 但反正我就是喜歡黑底的scheme沒差
+
 syntax on                   " 語法上色顯示
 set nocompatible            " VIM 不使用和 VI 相容的模式 This setting must be first. because it changes other options as a side effect
 set ic                      " 設定搜尋忽略大小寫
 set ru                      " 顯示右下角狀態列說明, 第幾行第幾個字, 設定statusline時, 無用
 set nu                      " 設定行號
-set hlsearch                " 搜尋結果hightlight顯示
-"hi Search cterm=reverse ctermbg=none ctermfg=none   " hightlight樣式調整, 應寫於colorscheme之後
+set hlsearch                " 搜尋結果highlight顯示
 set incsearch               " 加強版搜尋功能, 在輸入search pattern期間就會開始進行搜尋, 
 set nobackup                " 設定不自動儲存備份檔
 set history=100             " 保留 100 個使用過的指令
@@ -55,7 +56,7 @@ set pastetoggle=<F11>   " 暫時取消自動縮行, copy多行時可先按F11, �
                         " vim register也可解決 不用動用F11
 
 "按tab會自動搜尋檔案內相關字詞來補滿
-set completeopt=menu,preview,menuone,noinsert 
+set completeopt=menu,preview,menuone    ",noinsert - 不是所有版本都support
 function InsertTabWrapper(is_shift)
     if pumvisible()
 	        return a:is_shift ? "\<C-p>" : "\<C-n>"
@@ -71,22 +72,32 @@ function InsertTabWrapper(is_shift)
 endfunction
 inoremap <tab> <C-r>=InsertTabWrapper(0)<CR>
 
-"download colorscheme
+"""cmd""":colorscheme 按tab會顯示所有已放在 $VIMRUNTIME/colors/中的colorscheme
+"""cmd""":so $VIMRUNTIME/syntax/hitest.vim 把各highlight group與目前的顏色顯示出來
+"""cmd""":runtime syntax/colortest.vim 顯示顏色以供挑選
+
+"""download colorscheme
 "colorscheme candy
 "colorscheme distinguished
 "colorscheme grb256
 "colorscheme ir_black
 colorscheme jellybeans
 "colorscheme vividchalk
-"default colorscheme
+
+"""default colorscheme
 "colorscheme torte
 "colorscheme desert
 
-"set background=dark
 set t_Co=256
 
+"hi comment         ctermfg=lightmagenta                                             " highlight樣式調整, 應寫於colorscheme之後
+"hi Search          cterm=reverse ctermbg=none ctermfg=none guibg=NONE guifg=none    " highlight樣式調整, 應寫於colorscheme之後
+"hi CursorLine      cterm=reverse ctermbg=none ctermfg=none guibg=NONE guifg=none    " highlight樣式調整, 應寫於colorscheme之後
+"hi CursorColumn    cterm=reverse ctermbg=none ctermfg=none guibg=NONE guifg=none    " highlight樣式調整, 應寫於colorscheme之後
+"hi Normal          cterm=reverse ctermbg=none ctermfg=none guibg=NONE guifg=none    " highlight樣式調整, 應寫於colorscheme之後
+"hi Search          cterm=reverse ctermbg=none ctermfg=none guibg=NONE guifg=none    " highlight樣式調整, 應寫於colorscheme之後
 
-"set all              "顯示目前所有的環境參數設定
-"set                  "顯示與系統預設值不同的設定參數
+"""cmd"""顯示目前所有的環境參數設定 :set all
+"""cmd"""顯示與系統預設值不同的設定參數 :set
 
-au BufNewFile,BufRead *.cu set ft=cpp
+au BufNewFile,BufRead *.cu set ft=cpp   "au=autocmd
