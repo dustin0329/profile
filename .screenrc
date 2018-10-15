@@ -2,6 +2,9 @@
 startup_message off
 
 # ¥[¤Jª¬ºA¦C¡C
+caption always "%{.KW} %-w%{.mW}[%n]" %t%{.KW}%+w"
+hardstatus alwayslastline "%{R}[ %{w}%l %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m\%Y %{K} Load: %l %{w}"
+
 #version 0
 #caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
 #hardstatus alwaysignore
