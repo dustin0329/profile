@@ -3,16 +3,16 @@
 #\033 : 鍵盤上ESC對應的ASCII碼, (27=\033=0x1B) = ^[ = \e
 #特殊格式 : 0 = default value, 1 = 亮色, 22 = 非亮色, 4 = 底線, 24 = 非底線, 5 = 閃爍, 25 = 非閃爍, 7 = 反白
 #字體顏色 : 30 = 黑色, 31 = 紅色, 32 = 綠色, 33 = 黃色, 34 = 藍色, 35 = 洋紅, 36 = 青色, 37 = 白色
-start="\["; #bashrc = \[, cshrc = %{
-  end="\]"; #bashrc = \], cshrc = %}
-  black="${start}\e[1;30m$end";
-    red="${start}\e[1;31m$end";
-  green="${start}\e[1;32m$end";
- yellow="${start}\e[1;33m$end";
-   blue="${start}\e[1;34m$end";
-magenta="${start}\e[1;35m$end";
-   cyan="${start}\e[1;36m$end";
-  white="${start}\e[1;37m$end";
+set start="%{"; #bashrc = \[, cshrc = %{
+set   end="%}"; #bashrc = \], cshrc = %}
+set   black="${start}\e[1;30m$end";
+set     red="${start}\e[1;31m$end";
+set   green="${start}\e[1;32m$end";
+set  yellow="${start}\e[1;33m$end";
+set    blue="${start}\e[1;34m$end";
+set magenta="${start}\e[1;35m$end";
+set    cyan="${start}\e[1;36m$end";
+set   white="${start}\e[1;37m$end";
 ## This resets the color, you need it after each color command
     end="${start}\e[0m$end";
 
@@ -24,13 +24,13 @@ magenta="${start}\e[1;35m$end";
 #          %/         = the current working directory
 #\w        %~         = the current working directory, with $HOME abbreviated with a tilde
 #\W        %c or %.   = the basename of the current working directory, with $HOME abbreviated with a tilde
-export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t ${white}] in ${red}\W ${cyan}$ ${end}"
+set prompt="${white}[ ${yellow}%n ${white}on ${green}%M ${white}at ${magenta}%T ${white}] in ${red}%. ${end}"
 
-alias cls="clear"
-alias so="source ~/.bashrc"
-alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
+alias cls       clear
+alias so        source ~/.bashrc
+alias dropbox   cd /mnt/c/Users/Dustin/Dropbox
 
 #mkdir ~/.screen && chmod 700 ~/.screen
 #export SCREENDIR=$HOME/.screen
-export SCREENRC=$HOME/.screenrc
-alias screen='~/screen/src/screen'
+#export SCREENRC=$HOME/.screenrc
+#alias screen='~/screen/src/screen'
