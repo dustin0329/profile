@@ -29,9 +29,9 @@ export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t 
 
 alias cls="clear"
 alias so="source ~/.bashrc"
-alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
+#alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
 
 #mkdir ~/.screen && chmod 700 ~/.screen
 #export SCREENDIR=$HOME/.screen
-export SCREENRC=$HOME/.screenrc
-alias screen='~/screen/src/screen'
+#export SCREENRC=$HOME/.screenrc
+#alias screen='~/screen/src/screen'
