@@ -1,0 +1,227 @@
+# 關閉啟動訊息。
+startup_message off
+
+# 加入狀態列。
+#caption always "%{.KW} %-w%{.mW}[%n]" %t%{.KW}%+w"
+#hardstatus alwayslastline "%{R}[ %{w}%l %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m\%Y %{K} Load: %l %{w}"
+
+#version 0
+caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
+hardstatus alwaysignore
+hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .Y}$USER%{= .R}@%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+
+# Set hardstatus always on
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %M %d %0c:%s "
+
+#version1
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+
+#version2
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0c:%s "
+
+#version3
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %C %A"
+
+#version4
+caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+hardstatus alwayslastline "%{= wk} %{by} %H %{wk} | %-Lw%{kw}◣%{= g}%n%f* %t%{wk}◤%{wk}%+Lw%< %= %{kw}◣%{= R} [%m/%d %c] %{-}"
+
+##################################################################
+#狀態列種類1
+#caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .R}@%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+##################################################################
+#種類2
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+##################################################################
+#種類3
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+##hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0c:%s "
+##################################################################
+#種類4
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+##hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %C %A"
+##################################################################
+#種類5
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwayslastline "%{= wk} %{by} %H %{wk} | %-Lw%{kw}◣%{= g}%n%f* %t%{wk}◤%{wk}%+Lw%< %= %{kw}◣%{= R} [%m/%d %c] %{-}"
+##################################################################
+#種類6
+#caption always "%{=u .d} %-w%<%{=ub .B}%n %t%{=u .d}%+w "
+#hardstatus alwaysignore 
+## hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y %M %d(%D) %{= .m} %C %A"
+##################################################################
+
+##顏色設定#可加可不加
+###########################################
+#
+#term xterm
+#termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+#
+## allow bold colors - necessary for some reason
+#attrcolor b ".I"
+#attrcolor i "+b"
+#
+## erase background with current bg color
+#defbce on
+###########################################
+
+# 將預設編碼設為 UTF-8。
+defutf8 on
+
+# Refresh the display when exiting programs
+altscreen on
+
+# Dynamic title
+shelltitle '$ |bash'
+
+# Disable vbell
+vbell off
+
+##在編碼為UTF8底下看big5的檔案(Ctrl+a ,b/u)
+## C-a b --(switch to)--> view big5 data
+#bind b encoding big5 utf8
+## C-a u --(switch to)--> view utf8 data
+#bind u encoding utf8 utf8
+
+# = 自訂熱鍵 =
+
+# == Alt ==
+
+# - Alt + r : 清理當前視窗。 (C-a c)
+bindkey "^[r" clear
+
+# - Alt + s : 進入複製/捲動模式。 (C-a esc)
+bindkey "^[s" copy
+
+# - Alt + d : 將 screen 丟至背景執行。 (C-a d)
+bindkey "^[d" detach
+
+# - Alt + i : 顯示所有執行中的 screen。 (C-a *)
+bindkey "^[i" displays
+
+# - Alt + L : 將 screen 上鎖。 (C-a C-x)
+bindkey "^[l" lockscreen
+
+# === 分頁(Tab) ===
+
+# - Alt + c : 新增子視窗。(C-a c)
+bindkey "^[c" screen
+
+# - Alt + s : 自訂當前視窗標題。 (C-a A)
+bindkey "^[s" title
+
+# - Alt + d : 關閉當前視窗。 (C-a k)
+bindkey "^[d" kill
+
+# - Alt + x/X : 切換至下個視窗。 (C-a n)
+bindkey "^[x" next
+bindkey "^[X" next
+
+# - Alt + z/Z : 切換至上個視窗。 (C-a p)
+bindkey "^[z" prev
+bindkey "^[Z" prev
+
+############################################################
+## Ctrl + 方向鍵的右 : 切換至下個視窗。 (C-a n)
+## Ctrl + 方向鍵的左 : 切換至上個視窗。 (C-a p)
+## next:下一個 , prev 上一個(依照各個不同的linux 其鍵盤瑪都不同)
+##以下的組合可以自行試試哪組可以就用哪組
+#
+#bindkey "^[O5C" next
+#bindkey "^[O5D" prev
+#
+#bindkey "^[[C" next
+#bindkey "^[[D" prev
+#
+#bindkey "^[[1;5D" prev
+#bindkey "^[[1;5C" next
+#
+#bindkey "^[[5D" prev
+#bindkey "^[[5C" next
+############################################################
+
+# - Alt + `/= : 切換子視窗 0 ~ 子視窗12。
+bindkey "^[`" select 0 
+bindkey "^[1" select 1 
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+bindkey "^[0" select 10
+bindkey "^[-" select 11
+bindkey "^[=" select 12
+
+# === 分割(Split) ===
+
+# - Alt + h : 水平分割當前視窗。 (C-a S) 
+bindkey "^[h" split
+
+# - Alt + v : 垂直分割當前視窗。 (C-a |) 
+bindkey "^[v" split -v
+
+# - Alt + k : 關閉當前分割區。 (C-a X)
+bindkey "^[k" remove
+
+# - Alt + f : 切換當前分割區。 (C-a tab)
+bindkey "^[f" focus
+
+bindkey "^[q" only
+
+# == Ctrl ==
+
+# === 分頁(Tab) ===
+
+# - Ctrl + x/X : 切換至下個視窗。 (C-a n)
+bindkey "^x" next
+bindkey "^X" next
+
+# - Ctrl + z/Z : 切換至上個視窗。 (C-a p)
+bindkey "^z" prev
+bindkey "^Z" prev
+
+# == F1, F2, F3 .. ==
+
+# F1 : 新增子視窗。(C-a c)
+bindkey -k k1 screen
+
+# F2 : 自訂當前視窗標題。 (C-a A)
+bindkey -k k2 title
+
+# F3 : 進入複製/捲動模式。 (C-a esc)
+bindkey -k k3 copy
+
+# F4 : 切換至上一個視窗。 (C-a p)
+bindkey -k k4 prev
+
+# F5 : 切換至下一個視窗。 (C-a n)
+bindkey -k k5 next
+
+# F6 : 切換當前分割區。 (C-a tab)
+bindkey -k k6 focus
+
+#不讓某些原本的熱鍵可以再使用
+#所以bind掉他
+bind s
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
