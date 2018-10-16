@@ -14,7 +14,8 @@ magenta="${start}\e[1;35m$end";
    cyan="${start}\e[1;36m$end";
   white="${start}\e[1;37m$end";
 ## This resets the color, you need it after each color command
-    end="${start}\e[0m$end";
+#endcolor="${start}\e[0m$end";
+endcolor="${start}\e[0;37m$end";
 
 #bash vs csh
 #\u        %n         = username
@@ -24,7 +25,7 @@ magenta="${start}\e[1;35m$end";
 #          %/         = the current working directory
 #\w        %~         = the current working directory, with $HOME abbreviated with a tilde
 #\W        %c or %.   = the basename of the current working directory, with $HOME abbreviated with a tilde
-export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t ${white}] in ${red}\W ${cyan}$ ${end}"
+export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t ${white}] in ${red}\W ${cyan}~> ${endcolor} "
 
 alias cls="clear"
 alias so="source ~/.bashrc"

@@ -14,7 +14,8 @@ set magenta="${start}\e[1;35m$end";
 set    cyan="${start}\e[1;36m$end";
 set   white="${start}\e[1;37m$end";
 ## This resets the color, you need it after each color command
-    end="${start}\e[0m$end";
+#endcolor="${start}\e[0m$end";
+endcolor="${start}\e[0;37m$end";
 
 #bash vs csh
 #\u        %n         = username
@@ -24,7 +25,7 @@ set   white="${start}\e[1;37m$end";
 #          %/         = the current working directory
 #\w        %~         = the current working directory, with $HOME abbreviated with a tilde
 #\W        %c or %.   = the basename of the current working directory, with $HOME abbreviated with a tilde
-set prompt="${white}[ ${yellow}%n ${white}on ${green}%M ${white}at ${magenta}%T ${white}] in ${red}%. ${end}"
+set prompt="${white}[ ${yellow}%n ${white}on ${green}%M ${white}at ${magenta}%T ${white}] in ${red}%. ${cyan}~> ${endcolor} "
 
 alias cls       clear
 alias so        source ~/.bashrc
