@@ -1,0 +1,103 @@
+caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w"
+hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %Y %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
+
+altscreen on                # refresh the display when exiting programs
+defutf8 on                  # set default encoding using utf8
+defc1 off
+defflow on
+startup_message off         # start message
+shell $SHELL
+encoding
+defencoding uft8
+
+defbce on
+
+attrcolor b ".I"
+attrcolor i "+b"
+
+defscrollback 50000
+
+# Alt
+bindkey "^[r" clear         # Alt + r : 清理當前視窗。 (C-a c)
+bindkey "^[s" copy          # Alt + s : 進入複製/捲動模式。 (C-a esc)
+bindkey "^[d" detach        # Alt + d : 將 screen 丟至背景執行。 (C-a d)
+bindkey "^[i" displays      # Alt + i : 顯示所有執行中的 screen。 (C-a *)
+bindkey "^[l" lockscreen    # Alt + l : 將 screen 上鎖。 (C-a C-x)
+# 分頁(Tab)
+bindkey "^[c" screen        # Alt + c : 新增子視窗。(C-a c)
+bindkey "^[s" title         # Alt + s : 自訂當前視窗標題。 (C-a A)
+bindkey "^[K" kill          # Alt + d : 關閉當前視窗。 (C-a k)
+bindkey "^[x" next          # Alt + x : 切換至下個視窗。 (C-a n)
+bindkey "^[X" next          # Alt + X : 切換至下個視窗。 (C-a n)
+bindkey "^[z" prev          # Alt + z : 切換至上個視窗。 (C-a p)
+bindkey "^[Z" prev          # Alt + Z : 切換至上個視窗。 (C-a p)
+bindkey "^[[1;3C" next      # Alt + ->: 切換至下個視窗。 (C-a n)
+bindkey "^[[1;3D" prev      # Alt + <-: 切換至上個視窗。 (C-a p)
+bindkey "^[`" select 0      # Alt + ` : 切換子視窗 0。
+bindkey "^[1" select 1      # Alt + 1 : 切換子視窗 1。
+bindkey "^[2" select 2      # Alt + 2 : 切換子視窗 2。
+bindkey "^[3" select 3      # Alt + 3 : 切換子視窗 3。
+bindkey "^[4" select 4      # Alt + 4 : 切換子視窗 4。
+bindkey "^[5" select 5      # Alt + 5 : 切換子視窗 5。
+bindkey "^[6" select 6      # Alt + 6 : 切換子視窗 6。
+bindkey "^[7" select 7      # Alt + 7 : 切換子視窗 7。
+bindkey "^[8" select 8      # Alt + 8 : 切換子視窗 8。
+bindkey "^[9" select 9      # Alt + 9 : 切換子視窗 9。
+bindkey "^[0" select 10     # Alt + 0 : 切換子視窗 10。
+bindkey "^[-" select 11     # Alt + - : 切換子視窗 11。
+bindkey "^[=" select 12     # Alt + = : 切換子視窗 12。
+#分割(Split)
+bindkey "^[h" split         # Alt + h : 水平分割當前視窗。 (C-a S)
+bindkey "^[v" split -v      # Alt + v : 垂直分割當前視窗。 (C-a |)
+bindkey "^[X" remove        # Alt + k : 關閉當前分割區。 (C-a X)
+bindkey "^[f" focus         # Alt + f : 切換當前分割區。 (C-a tab)
+bindkey "^[q" only          # Alt + q : 
+# Ctrl
+# 分頁(Tab)
+bindkey "^x" next           # Alt + x : 切換至下個視窗。 (C-a n)
+bindkey "^X" next           # Alt + X : 切換至下個視窗。 (C-a n)
+bindkey "^z" prev           # Alt + z : 切換至上個視窗。 (C-a p)
+bindkey "^Z" prev           # Alt + Z : 切換至上個視窗。 (C-a p)
+# F1~Fx
+bindkey -k k1 screen        # F1      : 新增子視窗。(C-a c)
+bindkey -k k2 title         # F2      : 自訂當前視窗標題。 (C-a A)
+bindkey -k k3 copy          # F3      : 進入複製/捲動模式。 (C-a esc)
+bindkey -k k4 prev          # F4      : 切換至上一個視窗。 (C-a p)
+bindkey -k k5 next          # F5      : 切換至下一個視窗。 (C-a n)
+bindkey -k k6 focus         # F6      : 切換當前分割區。 (C-a tab)
+
+#shelltitle '$ | bash'       # dynamic title
+#vbell off                   # disable vbell
+
+#version0
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %M %d %0c:%s "
+#version1
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+#version2
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %0c:%s "
+#version3
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %C %A"
+#version4
+#caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
+#hardstatus alwayslastline "%{= wk} %{by} %H %{wk} | %-Lw%{kw}◣%{= g}%n%f* %t%{wk}◤%{wk}%+Lw%< %= %{kw}◣%{= R} [%m/%d %c] %{-}"
+#version5
+#caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .R}@%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+
+#不讓某些原本的熱鍵可以再使用 所以bind掉他
+bind s
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
