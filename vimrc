@@ -104,3 +104,8 @@ set t_Co=256
 """cmd"""顯示與系統預設值不同的設定參數 :set
 
 au BufNewFile,BufRead *.cu set ft=cpp   "au=autocmd
+
+"for gvim
+set guifont=monospace\ 16
+set columns=210
+set lines=24

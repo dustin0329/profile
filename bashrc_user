@@ -29,6 +29,7 @@ export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t 
 
 alias cls="clear"
 alias so="source ~/.bashrc"
+alias gitall="cd ~/github_clone_all"
 #alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
 
 #mkdir ~/.screen && chmod 700 ~/.screen
