@@ -1,3 +1,5 @@
+#Dustin Li - 20181018
+
 caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w"
 hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %Y %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
 
