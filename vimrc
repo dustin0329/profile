@@ -106,6 +106,10 @@ set t_Co=256
 au BufNewFile,BufRead *.cu set ft=cpp   "au=autocmd
 
 "for gvim
-set guifont=monospace\ 16
+if has("win32")
+	set guifont=Lucida_Console:h12
+else
+	set guifont=monospace\ 16
+endif
 set columns=210
 set lines=24
