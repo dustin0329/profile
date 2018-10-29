@@ -22,7 +22,7 @@ set backspace=2             " 在 insert 也可用 backspace
 set cursorline              " 顯示現在游標所在的行
 "set cursorcolumn           " 顯示現在游標所在的列
 set confirm                 " 操作過程有衝突時, 以明確的文字來詢問, 而不是直接阻擋使用者進行該項動作
-set showcmd                 " 顯示尚未完成的命令, 如: 2f
+set showcmd                 " 顯示尚未完成的命令, 如: 2f, 也可顯示選取的行數
 set showmode                " 顯示目前操作模式為一般, 插入, 取代還是選取模式
 
 "set mouse=a                 " 滑鼠控制模式
