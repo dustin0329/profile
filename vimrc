@@ -105,6 +105,8 @@ set t_Co=256
 
 au BufNewFile,BufRead *.cu set ft=cpp   "au=autocmd
 
+"set shell=ksh      "避免vimdiffs之类的cmd仍然重新load shell
+
 "for gvim
 if has("win32")
 	set guifont=Lucida_Console:h12
