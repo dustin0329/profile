@@ -31,5 +31,6 @@ export PS1="${white}[ ${yellow}\u ${white}on ${green}\h ${white}at ${magenta}\t 
 
 alias cls="clear"
 alias so="source ~/.bashrc"
+alias ll="ls -laG" #--color for GNU; -G for FreeBSD
 #alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
 
