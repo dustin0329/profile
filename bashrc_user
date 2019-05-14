@@ -34,3 +34,7 @@ alias so="source ~/.bashrc"
 alias ll="ls -laG" #--color for GNU; -G for FreeBSD
 #alias dropbox="cd /mnt/c/Users/Dustin/Dropbox"
 
+#memo
+#macos switch shell chsh -s /bin/zsh
+#macos switch shell chsh -s /bin/bash
+
