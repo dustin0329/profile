@@ -56,10 +56,6 @@ set softtabstop=4                           " 按下tab鍵時, 實際占用的�
 """ex"""if expandtab, softtabstop(4), enter 1 tab, 4 space
 "check by dustin
 
-set pastetoggle=<F11>   " 暫時取消自動縮行, copy多行時可先按F11, 否則因為有打開自動縮排, 資料貼上格式會跑掉
-                        " 輸入狀態變成<INSERT PASTE>時, 即可正常copy多行上去
-                        " vim register也可解決 不用動用F11
-
 "按tab會自動搜尋檔案內相關字詞來補滿
 set completeopt=menu,preview,menuone    ",noinsert - 不是所有版本都support
 function InsertTabWrapper(is_shift)
@@ -120,15 +116,17 @@ nmap gb :bn<CR>
 nmap gB :bp<CR>
 
 "no highlight
-map <F11> : nohls<CR>
+map <F9> : nohls<CR>
+
+set pastetoggle=<F10>   " 暫時取消自動縮行, copy多行時可先按F11, 否則因為有打開自動縮排, 資料貼上格式會跑掉
+                        " 輸入狀態變成<INSERT PASTE>時, 即可正常copy多行上去
+                        " vim register也可解決 不用動用F11
 
 "sting reversed
 vnoremap ;rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
 
 au BufNewFile,BufRead *.cu set ft=cpp                   "au=autocmd
 au BufNewFile,BufRead *.sv set filetype=systemverilg    "au=autocmd
-
-
 
 "plugin autoload - https://github.com/tpope/vim-pathogen.git
 execute pathogen#infect()
@@ -166,7 +164,7 @@ let g:airline_theme='wombat'
 "airline theme - https://github.com/vim-airline/vim-airline-themes.git
 
 "grep - https://github.com/yegappan/grep.git
-nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F6> :Grep<CR>
 
 
 "set shell=ksh      "避免vimdiffs之类的cmd仍然重新load shell
