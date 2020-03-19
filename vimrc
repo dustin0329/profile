@@ -11,7 +11,7 @@ syntax on                   " 語法上色顯示
 set nocompatible            " VIM 不使用和 VI 相容的模式 This setting must be first. because it changes other options as a side effect
 set ic                      " 設定搜尋忽略大小寫
 set ru                      " 顯示右下角狀態列說明, 第幾行第幾個字, 設定statusline時, 無用
-set nu                      " 設定行號
+set nu                      " 設定行號  
 set nowrap                  " 關閉自動換行, 建議設為 wrap 時, 搭配set nu使用
 set hlsearch                " 搜尋結果highlight顯示
 set incsearch               " 加強版搜尋功能, 在輸入search pattern期間就會開始進行搜尋, 
@@ -24,6 +24,8 @@ set cursorline              " 顯示現在游標所在的行
 set confirm                 " 操作過程有衝突時, 以明確的文字來詢問, 而不是直接阻擋使用者進行該項動作
 set showcmd                 " 顯示尚未完成的命令, 如: 2f, 也可顯示選取的行數
 set showmode                " 顯示目前操作模式為一般, 插入, 取代還是選取模式
+"set foldmethod=indent       " 縮排折疊 zm:折疊, zr解開折疊
+set gcr=a:blinkon0          " 游標不閃爍
 
 "set mouse=a                 " 滑鼠控制模式
 
@@ -103,7 +105,69 @@ set t_Co=256
 """cmd"""顯示目前所有的環境參數設定 :set all
 """cmd"""顯示與系統預設值不同的設定參數 :set
 
-au BufNewFile,BufRead *.cu set ft=cpp   "au=autocmd
+"set wrap時移動
+nmap k gk
+nmap j gj
+
+"分割視窗中移動
+nmap <C-L> <C-W>l
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+
+"buffer change mapping
+nmap gb :bn<CR>
+nmap gB :bp<CR>
+
+"no highlight
+map <F11> : nohls<CR>
+
+"sting reversed
+vnoremap ;rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
+
+au BufNewFile,BufRead *.cu set ft=cpp                   "au=autocmd
+au BufNewFile,BufRead *.sv set filetype=systemverilg    "au=autocmd
+
+
+
+"plugin autoload - https://github.com/tpope/vim-pathogen.git
+execute pathogen#infect()
+
+"Signature - https://github.com/kshenoy/vim-signature.git
+map <F1> :SignatureToggleSigns<CR>
+
+"NerdTree - https://github.com/preservim/nerdtree.git
+map <F5> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Easy Align - https://github.com/junegunn/vim-easy-align.git
+vmap <Enter> <Plug>(EasyAlign)
+
+"CtrlP - https://github.com/kien/ctrlp.vim.git
+let g:ctrlp_clear_cache_on_exit = 0 " 離開 vim 後不要清 cache
+let g:ctrlp_max_files = 1000000 " 加大 cache 索引的檔案數, 否則會漏找檔案
+let g:ctrlp_user_command = 'find %s -type f' " MACOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+"airline - https://github.com/vim-airline/vim-airline.git
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show =  1
+let g:airline_theme='wombat'
+
+"airline theme - https://github.com/vim-airline/vim-airline-themes.git
+
+"grep - https://github.com/yegappan/grep.git
+nnoremap <silent> <F3> :Grep<CR>
+
 
 "set shell=ksh      "避免vimdiffs之类的cmd仍然重新load shell
 
@@ -115,3 +179,4 @@ else
 endif
 set columns=210
 set lines=24
+
