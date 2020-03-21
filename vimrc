@@ -7,11 +7,8 @@
 set encoding=utf-8
 set fileencodings=utf-8,cp950
 
-
-
 " 設定喜好設定:
 "set background=dark         " 要在syntax on以前設定好背景色彩, 有colorscheme理應不用設定, 但反正我就是喜歡黑底的scheme沒差
-
 syntax on                   " 語法上色顯示
 set nocompatible            " VIM 不使用和 VI 相容的模式 This setting must be first. because it changes other options as a side effect
 set ic                      " 設定搜尋忽略大小寫
@@ -31,8 +28,8 @@ set showcmd                 " 顯示尚未完成的命令, 如: 2f, 也可顯示
 set showmode                " 顯示目前操作模式為一般, 插入, 取代還是選取模式
 "set foldmethod=indent       " 縮排折疊 zm:折疊, zr解開折疊
 set gcr=a:blinkon0          " 游標不閃爍
-
 "set mouse=a                 " 滑鼠控制模式
+set autoread                " auto read when file is changed from outside
 
 set laststatus=2            " =2, 永遠開啟status line
 set statusline=[%F]\ %m%<%r%h%w\ [%{&ff},%{&fileencoding},%Y]%=\    " statusline
@@ -125,9 +122,18 @@ match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 au BufNewFile,BufRead *.cu set ft=cpp                   "au=autocmd
 au BufNewFile,BufRead *.sv set filetype=systemverilog   "au=autocmd
 
+" auto reload vimrc when editing it
+autocmd bufwritepost .vimrc source $MYVIMRC
+autocmd bufwritepost vimrc source $MYVIMRC
 
 
 " hotkey:
+" \vimrc 新tab開啟~/.vimrc
+map <leader>vimrc :tabe ~/.vimrc
+
+" :cd. change working directory to that of the current file
+cmap cd. lcd %:p:h
+
 "set wrap時移動
 nmap k gk
 nmap j gj
@@ -173,7 +179,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 " returns true iff is NERDTree open/active
-function! s:isNTOpen()        
+function! s:isNTOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -224,9 +230,11 @@ nnoremap <silent> <F3> :Grep<CR>
 
 "for gvim
 if has("win32")
-    set guifont=Lucida_Console:h12
+    set guifont=Lucida_Console:h12  " Win32
+elseif has("gui_macvim")
+    set guifont=Monaco:h14          " MACOS
 else
-    set guifont=monospace\ 16
+    set guifont=monospace\ 16       " Linux
 endif
 set columns=160
 set lines=50
