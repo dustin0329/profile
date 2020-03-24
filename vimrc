@@ -145,8 +145,11 @@ nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 
 " buffer change mapping
-nmap gb :bn<CR>
-nmap gB :bp<CR>
+nmap <F6> :bp<CR> " buffer 前移
+nmap <F7> :bd<CR> " 刪除當下buffer
+nmap <F8> :bn<CR> " buffer 後移
+" nmap gb :bn<CR>
+" nmap gB :bp<CR>
 
 set pastetoggle=<F9>    " 暫時取消自動縮行, copy多行時可先按F9, 否則因為有打開自動縮排, 資料貼上格式會跑掉
                         " 輸入狀態變成<INSERT PASTE>時, 即可正常copy多行上去
